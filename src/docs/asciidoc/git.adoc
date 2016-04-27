@@ -1,0 +1,113 @@
+= Git in Practice
+Thilko Richter
+2016-04-27
+:revnumber: {project-version}
+:example-caption!:
+ifndef::imagesdir[:imagesdir: images]
+ifndef::sourcedir[:sourcedir: ../java]
+
+== What is git?
+
+Git is a free and open source distributed version control system.
+
+== Git Basics
+
+== git init
+
+This command creates an empty Git repository - basically a .git directory with
+subdirectories for objects, refs/heads, refs/tags, and template files.
+
+
+== git clone
+
+Clones a repository into a newly created directory, creates remote-tracking branches
+for each branch in the cloned repository, and creates and checks out an initial branch
+that is forked from the cloned repository’s currently active branch.
+
+== git add
+
+Adds file content to the index.
+
+[source,Ruby]
+----
+git add -A # adds all changes to the index
+git add index.html # adds just the file to the index
+----
+
+== git commit
+
+Stores the current contents of the index in a new commit along with a log message from the user describing the changes.
+
+[source,Ruby]
+----
+git commit -m "[CIM-3823] implement adding of drugs"
+git commit -am "example message"
+----
+
+== Speaker Notes
+
+Press the `*s*` key to access speaker notes.
+
+[NOTE.speaker]
+--
+You've unlocked the super secret notes area.
+Neat huh?
+--
+
+== Source Code
+
+[source,java]
+.Java code from project
+----
+include::{sourcedir}/example/StringUtils.java[tags=contains,indent=0]
+----
+
+This page was built by the following command:
+
+ $ ./gradlew asciidoctor
+
+== Blank screen
+
+You can press `*b*` or `*.*` to blank your current screen.
+
+Hit it again to bring it back.
+
+== Overview
+
+Press the `*esc*` key to get an overview of your slides.
+
+== Including documents from subdir
+
+.include::subdir/_b.adoc[]
+
+include::subdir/_b.adoc[]
+
+== Images
+
+[.thumb]
+image::sunset.jpg[scaledwidth=75%]
+
+== Attributes
+
+Press the down arrow key to see the next sub-slide.
+
+=== Attributes Part 1
+.Built-in
+asciidoctor-version:: {asciidoctor-version}
+safe-mode-name:: {safe-mode-name}
+docdir:: {docdir}
+docfile:: {docfile}
+imagesdir:: {imagesdir}
+
+=== Attributes Part 2
+.Custom
+project-version:: {project-version}
+sourcedir:: {sourcedir}
+endpoint-url:: {endpoint-url}
+
+== build.gradle
+
+[source,groovy]
+----
+include::{build-gradle}[]
+----
