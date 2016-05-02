@@ -3,56 +3,143 @@ Thilko Richter
 2016-04-27
 :revnumber: {project-version}
 :example-caption!:
-ifndef::imagesdir[:imagesdir: images]
-ifndef::sourcedir[:sourcedir: ../java]
-
-== What is git?
-
-Git is a free and open source distributed version control system.
 
 == Git Basics
 
-== git init
+=== git init
 
 This command creates an empty Git repository - basically a .git directory with
 subdirectories for objects, refs/heads, refs/tags, and template files.
 
+----
+git init
+----
 
-== git clone
+=== git clone
 
 Clones a repository into a newly created directory, creates remote-tracking branches
 for each branch in the cloned repository, and creates and checks out an initial branch
 that is forked from the cloned repository’s currently active branch.
 
-== git add
+----
+git clone https://github.com/thilko/groovy_goodness.git
+----
+
+=== git add
 
 Adds file content to the index.
 
-[source,Ruby]
 ----
 git add -A # adds all changes to the index
 git add index.html # adds just the file to the index
 ----
 
-== git commit
+=== git commit
 
 Stores the current contents of the index in a new commit along with a log message from the user describing the changes.
 
-[source,Ruby]
 ----
 git commit -m "[CIM-3823] implement adding of drugs"
 git commit -am "example message"
 ----
 
-== Speaker Notes
+=== git log
 
-Press the `*s*` key to access speaker notes.
+Shows the commit logs.
 
-[NOTE.speaker]
---
-You've unlocked the super secret notes area.
-Neat huh?
---
+----
+git log --oneline --decorate --graph --all
+git log -p
+----
+
+=== git reset
+
+Reset the current HEAD to the specified state. You can use this command to take back
+local commits.
+
+----
+git reset
+git reset --soft HEAD^
+git reset --hard # resets working dir and
+----
+
+=== git clean
+
+Removes untracked files and directories.
+
+----
+git reset
+git reset --soft HEAD^
+git reset --hard # resets working dir and
+----
+
+=== git revert
+
+Given one or more existing commits, revert the changes that the related patches introduce, and record some new commits that record them.
+
+----
+git revert <commit_hash>
+----
+
+=== git push
+
+Updates the remote repository with your local changes.
+
+----
+git push
+git push origin master
+----
+
+=== git stash
+Use git stash when you want to record the current state of the working directory and the index, but want to go back to a clean working directory. 
+
+----
+git push
+git push origin master
+----
+
+== Git workflows
+
+=== Merging
+In git exists two ways of applying changes from on branch onto another: **merge** and **rebase**.
+
+=== git merge
+Join two or more development histories together
+----
+git merge <branch_name>
+----
+
+=== !
+image::basic-rebase-2.png[]
+----
+git checkout master
+git merge experiment
+----
+
+=== git rebase
+Reapply commits on top of another base tip
+----
+git rebase
+git rebase master
+----
+
+=== !
+image::basic-rebase-1.png[]
+
+=== !
+image::basic-rebase-3.png[]
+----
+git checkout experiment
+git rebase master
+----
+
+=== How to use branches?
+
+== Advanced git
+
+=== git bisect
+
+== Git under the hood
 
 == Source Code
 
